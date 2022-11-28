@@ -1,0 +1,13 @@
+{% extends "tasks/base.html" %}
+{%load crispy_forms_tags %} 
+{% block content %}
+<div class="mt-3">
+    <h3>All tasks</h3>
+    <ul>
+        {% for task in user.task_set.all %}
+            <li>{{ task.title }} <button><a href="{% url 'edit' task.id %}">Edit</a> </button> <button><a href="{% url 'delete' task.id %}">Delete</a></button></li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'add' %}">Add task</a></p>
+</div>
+{% endblock %}
